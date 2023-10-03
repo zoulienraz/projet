@@ -18,6 +18,7 @@ def load_data_in_es():
     for id, truck in enumerate(data):
         res = es.index(index="sfdata", doc_type="truck", id=id, body=truck)
     print("Total trucks loaded: ", len(data))
+   
 
 def safe_check_index(index, retry=3):
     """ connect to ES with retry """
@@ -48,6 +49,10 @@ def check_and_load_index():
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/coucou')
+def coucou():
+    return "coucou toi!"    
 
 @app.route('/debug')
 def test_es():
